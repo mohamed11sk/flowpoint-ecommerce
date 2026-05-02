@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>تسجيل الدخول</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-signin-client_id" content="313129247734-1ofbi7sd3c105ngld0nff91u8ueftvvj.apps.googleusercontent.com">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Tajawal', 'Roboto', Arial, sans-serif;
+      background: linear-gradient(135deg, var(--gray-color), var(--light-color));
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: var(--light-color);
+      padding: 40px 24px 32px 24px;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      max-width: 400px;
+      width: 95%;
+      margin: 0 auto;
+    }
+    .container h1 {
+      margin-bottom: 30px;
+      font-size: 26px;
+      color: var(--primary-color);
+      font-family: 'Tajawal', sans-serif;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+    #content {
+      margin-top: 30px;
+      text-align: center;
+    }
+    #content img {
+      border-radius: 50%;
+      margin-top: 15px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+      border: 3px solid var(--secondary-color);
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+    }
+    .g_id_signin {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 18px 4px 14px 4px;
+        max-width: 99vw;
+      }
+      .container h1 {
+        font-size: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>تسجيل الدخول بحساب جوجل</h1>
+    <div id="g_id_onload"
+         data-client_id="120199268347-pim0u8q3p205619asnaaq4a6h6kqc5s9.apps.googleusercontent.com"
+         data-context="signin"
+         data-callback="handleCredentialResponse"
+         data-auto_prompt="false">
+    </div>
+    <div class="g_id_signin"
+         data-type="standard"
+         data-size="large"
+         data-theme="outline"
+         data-text="sign_in_with"
+         data-shape="pill"
+         data-logo_alignment="left">
+    </div>
+    <div id="content"></div>
+  </div>
+  <script>
+    function handleCredentialResponse(response) {
+      const data = parseJwt(response.credential);
+        
+      localStorage.setItem('user', JSON.stringify(data));
+      window.location.href = "index.php";
+    }
+    function parseJwt(token) {
+      const base64Url = token.split('.')[1];
+      const base64 = atob(base64Url);
+      const jsonPayload = decodeURIComponent(base64.split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+      }).join(''));
+      return JSON.parse(jsonPayload);
+    }
+  </script>
+</body>
+</html>
