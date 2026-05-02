@@ -1,5 +1,5 @@
 <?php
-include 'function.php';
+include 'includes/function.php';
 
 $sliders = fetch_active_sliders();
 $products = fetch_products();
@@ -15,10 +15,10 @@ $products = fetch_products();
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-   <?php include 'header.php'; ?>
+   <?php include 'includes/header.php'; ?>
    
 <!-- سله التسوق  -->
      <!-- زر التمرير للأعلى -->
@@ -208,7 +208,7 @@ $products = fetch_products();
     
     <!-- التذييل -->
     <footer class="footer">
-        <?php include 'footer.php';?>
+        <?php include 'includes/footer.php';?>
        
     </footer>
     <div id="cart-notification" class="cart-notification"></div>

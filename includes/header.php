@@ -141,8 +141,6 @@
     </div>
 
     <script src="js/common.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/wishlist.js"></script>
     <script>
         document.querySelector('.cart-link').onclick = function(e) {
             e.preventDefault();
@@ -197,17 +195,3 @@
             window.location.href = "profile.php";
         };
     </script>
-
-    <div class="categories-bar">
-        <div class="container">
-            <ul class="categories">
-                <li class="category"><a href="#"><i class="fas fa-tshirt"></i> ملابس</a></li>
-                <li class="category"><a href="#"><i class="fas fa-spray-can-sparkles"></i> عطور</a></li>
-                <li class="category"><a href="#"><i class="fas fa-gem"></i> اكسسوارات</a></li>
-                <li class="category"><a href="#"><i class="fas fa-clock"></i> ساعات</a></li>
-                <li class="category"><a href="#"><i class="fas fa-shopping-bag"></i> حقائب</a></li>
-                <li class="category"><a href="#"><i class="fas fa-shoe-prints"></i> أحذية</a></li>
-            </ul>
-        </div>
-    </div>
-

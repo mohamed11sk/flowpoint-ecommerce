@@ -6,12 +6,12 @@
     <title>قائمة المفضلة - متجرنا</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="favoreite.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/favorite.css">
 
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <?php include 'includes/header.php'; ?>
 
     <div class="container">
         <div class="wishlist-page">
@@ -50,11 +50,10 @@
     <div id="notification" class="notification"></div>
 
     <footer class="footer">
-        <?php include 'footer.php';?>
+        <?php include 'includes/footer.php';?>
     </footer>
 
 
-    <script src="js/cart.js"></script>
     <script src="js/favorite.js"></script>
 
 

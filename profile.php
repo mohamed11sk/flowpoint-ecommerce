@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <style>
     .profile-wrapper {
       width: 100%;
@@ -207,7 +207,7 @@
   </style>
 </head>
 <body>
-  <?php include 'header.php'; ?>
+  <?php include 'includes/header.php'; ?>
   <div class="profile-wrapper">
     <div class="profile-header">
       <span class="icon"><i class="fas fa-user-circle"></i></span>
@@ -218,7 +218,7 @@
       <div class="profile-info">
         <div class="profile-name" id="profile-name">اسم المستخدم</div>
         <div class="profile-email" id="profile-email">user@example.com</div>
-        <div class="profile-status"><i class="fas fa-check-circle"></i> عضو في متجرنا</div>
+        <div class="profile-status"><i class="fas fa-check-circle"></i> عضو في Flow Point</div>
       </div>
       <div class="profile-actions">
         <button class="main-btn" id="profile-logout-btn">
@@ -232,7 +232,7 @@
   </div>
       <!-- التذييل -->
       <footer class="footer">
-        <?php include 'footer.php';?>
+        <?php include 'includes/footer.php';?>
        
     </footer>
     <script>

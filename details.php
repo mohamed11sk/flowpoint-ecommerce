@@ -6,7 +6,7 @@
     <title>تفاصيل المنتج - متجرنا</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <style>
         body {
             background: #f6f8fa;
@@ -251,8 +251,8 @@
     </style>
 </head>
 <body>
-    <?php include 'function.php'; ?>
-    <?php include 'header.php'; ?>
+    <?php include 'includes/function.php'; ?>
+    <?php include 'includes/header.php'; ?>
     <?php
         $product = null;
         $gallery = [];
@@ -350,9 +350,7 @@
         </div>
         <?php endif; ?>
     </div>
-    <?php include 'footer.php'; ?>
-    <script src="js/cart.js"></script>
-    <script src="js/wishlist.js"></script>
+    <?php include 'includes/footer.php'; ?>
     <script src="js/favorite.js"></script>
 
     <script>
