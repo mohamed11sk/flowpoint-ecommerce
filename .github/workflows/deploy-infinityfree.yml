@@ -18,10 +18,10 @@ jobs:
       - name: Deploy site via FTP
         uses: dawidd6/action-ftp-deploy@v4
         with:
-          server: ${{ secrets.INFINITYFREE_FTP_HOST }}
+          server: ftpupload.net
           username: ${{ secrets.INFINITYFREE_FTP_USERNAME }}
           password: ${{ secrets.INFINITYFREE_FTP_PASSWORD }}
-          port: ${{ secrets.INFINITYFREE_FTP_PORT }}
+          port: 21
           local-dir: ./
           server-dir: /htdocs
           exclude: .git* .github*
