@@ -7,8 +7,9 @@
             </a>
             
             <div class="search-box">
-                <input type="text" placeholder="ابحث عن أي منتج...">
-                <button><i class="fas fa-search"></i> بحث</button>
+                <input type="text" id="search-input" placeholder="ابحث عن أي منتج...">
+                <div id="search-suggestions" class="search-suggestions"></div>
+                <button id="search-btn"><i class="fas fa-search"></i> بحث</button>
             </div>
             
             <div class="nav-links">
@@ -141,6 +142,7 @@
     </div>
 
     <script src="js/common.js"></script>
+    <script src="js/search.js"></script>
     <script>
         document.querySelector('.cart-link').onclick = function(e) {
             e.preventDefault();

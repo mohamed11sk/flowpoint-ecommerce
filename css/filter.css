@@ -1,0 +1,475 @@
+/* ============================================================
+   filter.css — أنماط شريط الفلترة والترتيب والـ Pagination
+   ============================================================ */
+
+/* ── شريط الفلترة ─────────────────────────────────────────── */
+.category-filter-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: calc(100% - 32px);
+    max-width: 100%;
+    margin: 20px auto 0;
+    padding: 16px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.filter-label-row {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.filter-bar-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cairo', 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: #78716C;
+}
+
+.filter-bar-label i {
+    color: #78716C;
+    font-size: 14px;
+}
+
+.category-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 8px;
+    justify-content: flex-start;
+}
+
+.cat-chip {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 86px;
+    min-width: 86px;
+    height: 86px;
+    padding: 10px 0;
+    border: 1px solid #E7E5E4;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #1C1917;
+    font-family: 'Cairo', 'IBM Plex Sans Arabic', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cat-chip .chip-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 20px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: #F8F6F2;
+    color: #F97316;
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.cat-chip .chip-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: inherit;
+}
+
+.cat-chip:hover,
+.cat-chip:focus-visible {
+    background: #FFF7ED;
+    color: #F97316;
+    border-color: #F97316;
+    transform: translateY(-1px);
+}
+
+.cat-chip.active {
+    background: #FFF7ED;
+    color: #F97316;
+    border-color: #F97316;
+}
+
+@media (max-width: 640px) {
+    .category-filter-bar {
+        width: calc(100vw - 32px);
+    }
+
+    .category-chips {
+        justify-content: center;
+    }
+}
+
+/* ── شريط الترتيب وعداد المنتجات ─────────────────────────── */
+.products-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.products-count-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 153, 0, 0.3);
+    background: rgba(255, 153, 0, 0.12);
+    color: var(--secondary-color);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sort-select-styled {
+    padding: 8px 16px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.sort-select-styled:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+/* ── عنوان القسم ──────────────────────────────────────────── */
+.section-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-title-wrapper .section-title {
+    transition: opacity 0.3s ease;
+}
+
+.section-title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--secondary-color), #ff8c00);
+    color: #fff;
+    font-size: 16px;
+}
+
+/* ── أنيميشن الكروت ───────────────────────────────────────── */
+.product-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-card.hidden-card {
+    display: none;
+}
+
+.product-card.fade-in {
+    animation: fadeInUp 0.3s ease both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── تقييم المنتج ─────────────────────────────────────────── */
+.rating-value {
+    margin-right: 4px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* ── رسالة لا توجد نتائج ──────────────────────────────────── */
+.no-results-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 1 / -1;
+    padding: 60px 20px;
+    color: #aaa;
+    text-align: center;
+}
+
+.no-results-msg[hidden] {
+    display: none;
+}
+
+.no-results-msg i {
+    display: block;
+    margin-bottom: 16px;
+    font-size: 64px;
+    color: #e0e0e0;
+}
+
+.no-results-msg h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #666;
+}
+
+.no-results-msg p {
+    font-size: 14px;
+}
+
+/* ── Pagination ────────────────────────────────────────────── */
+.pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.page-btn:hover:not(.disabled) {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: #fff;
+}
+
+.page-btn.active {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: #fff;
+}
+
+.page-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ── زر التمرير للأعلى ───────────────────────────────────── */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    background: var(--secondary-color);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.scroll-top-btn[hidden] {
+    display: none;
+}
+
+.products-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.products-count-badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 153, 0, 0.3);
+    background: rgba(255, 153, 0, 0.12);
+    color: var(--secondary-color);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.sort-select-styled {
+    padding: 8px 16px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    background: #fff;
+    cursor: pointer;
+    transition: border-color 0.2s;
+}
+
+.sort-select-styled:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+/* ── عنوان القسم ──────────────────────────────────────────── */
+.section-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-title-wrapper .section-title {
+    transition: opacity 0.3s ease;
+}
+
+.section-title-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--secondary-color), #ff8c00);
+    color: #fff;
+    font-size: 16px;
+}
+
+/* ── أنيميشن الكروت ───────────────────────────────────────── */
+.product-card {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.product-card.hidden-card {
+    display: none;
+}
+
+.product-card.fade-in {
+    animation: fadeInUp 0.3s ease both;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── تقييم المنتج ─────────────────────────────────────────── */
+.rating-value {
+    margin-right: 4px;
+    font-size: 13px;
+    color: #666;
+}
+
+/* ── رسالة لا توجد نتائج ──────────────────────────────────── */
+.no-results-msg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-column: 1 / -1;
+    padding: 60px 20px;
+    color: #aaa;
+    text-align: center;
+}
+
+.no-results-msg[hidden] {
+    display: none;
+}
+
+.no-results-msg i {
+    display: block;
+    margin-bottom: 16px;
+    font-size: 64px;
+    color: #e0e0e0;
+}
+
+.no-results-msg h3 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #666;
+}
+
+.no-results-msg p {
+    font-size: 14px;
+}
+
+/* ── Pagination ────────────────────────────────────────────── */
+.pagination {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 30px;
+}
+
+.page-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.page-btn:hover:not(.disabled) {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: #fff;
+}
+
+.page-btn.active {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: #fff;
+}
+
+.page-btn.disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* ── زر التمرير للأعلى ───────────────────────────────────── */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 2px solid #000;
+    background: var(--secondary-color);
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.scroll-top-btn[hidden] {
+    display: none;
+}

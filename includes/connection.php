@@ -1,7 +1,7 @@
 <?php
-$dsn = 'mysql:host=localhost;dbname=ecommerce_store;charset=utf8';
-$user = 'root';
-$pass = '';
+$dsn = 'mysql:host=sql308.infinityfree.com;dbname=if0_41799164_connection;charset=utf8';
+$user = 'if0_41799164';
+$pass = 'b1TmPsLeIxkcb0';
 
 try {
     $conn = new PDO($dsn, $user, $pass, [

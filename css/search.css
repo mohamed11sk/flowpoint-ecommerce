@@ -1,0 +1,524 @@
+/* ================ CSS للبحث احترافي (Amazon Style) ================ */
+
+/* البحث في الـ Header */
+.search-box {
+    flex-grow: 1;
+    max-width: 700px;
+    margin: 0 20px;
+    display: flex;
+    height: 40px;
+    position: relative;
+}
+
+.search-box input {
+    width: 100%;
+    border: none;
+    border-radius: 4px 0 0 4px;
+    padding: 0 15px;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s ease;
+    background: white;
+    color: #333;
+}
+
+.search-box input:focus {
+    box-shadow: inset 0 0 0 2px var(--secondary-color);
+}
+
+.search-box button {
+    background: var(--secondary-color);
+    border: none;
+    border-radius: 0 4px 4px 0;
+    padding: 0 20px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 600;
+}
+
+.search-box button:hover {
+    background: #e68a00;
+}
+
+/* الاقتراحات الحية (Dropdown) */
+.search-suggestions {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: white;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    max-height: 500px;
+    overflow-y: auto;
+    z-index: 1001;
+    display: none;
+    border: 1px solid #ddd;
+    border-top: none;
+}
+
+.suggestions-list {
+    padding: 5px 0;
+}
+
+.suggestion-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: background-color 0.2s ease;
+    border-right: 3px solid transparent;
+}
+
+.suggestion-item:hover,
+.suggestion-item.active {
+    background-color: #f5f5f5;
+    border-right-color: var(--secondary-color);
+}
+
+.suggestion-image {
+    width: 50px;
+    height: 50px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #f5f5f5;
+}
+
+.suggestion-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.suggestion-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.suggestion-title {
+    font-size: 14px;
+    color: var(--text-color);
+    font-weight: 500;
+    margin-bottom: 4px;
+    line-height: 1.3;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.suggestion-title strong {
+    color: var(--secondary-color);
+    font-weight: 700;
+    background: rgba(255, 153, 0, 0.1);
+    padding: 0 2px;
+}
+
+.suggestion-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+}
+
+.suggestion-price {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.suggestion-old-price {
+    color: #999;
+    text-decoration: line-through;
+}
+
+.suggestion-badge {
+    background: var(--secondary-color);
+    color: white;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-weight: 600;
+}
+
+/* نتائج البحث - Modal */
+.search-results-modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.results-container {
+    background: white;
+    border-radius: 12px;
+    max-width: 1200px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    margin-top: 20px;
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.results-header {
+    padding: 30px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1a3a52 100%);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.results-header h2 {
+    font-size: 28px;
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.results-header span {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+.results-count {
+    font-size: 16px;
+    opacity: 0.95;
+    margin: 0;
+}
+
+.results-count strong {
+    color: var(--secondary-color);
+    font-weight: 700;
+}
+
+/* شبكة النتائج */
+.results-grid {
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.search-product-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+}
+
+.search-product-card:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+}
+
+.product-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.product-image-box {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 1;
+    background: #f5f5f5;
+}
+
+.product-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.search-product-card:hover .product-image-box img {
+    transform: scale(1.08);
+}
+
+.product-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--secondary-color);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.product-details {
+    padding: 15px;
+}
+
+.product-details h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 28px;
+}
+
+.product-rating {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 13px;
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+.product-rating i {
+    margin-left: 5px;
+}
+
+.product-prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 12px;
+}
+
+.current-price {
+    color: var(--secondary-color);
+    font-weight: 700;
+    font-size: 16px;
+}
+
+/* حالة عدم وجود نتائج */
+.results-container.no-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    text-align: center;
+    padding: 60px 30px;
+}
+
+.results-container.no-results i {
+    font-size: 100px;
+    color: var(--secondary-color);
+    margin-bottom: 25px;
+    opacity: 0.3;
+}
+
+.results-container.no-results h2 {
+    font-size: 32px;
+    color: var(--text-color);
+    margin-bottom: 12px;
+    font-weight: 700;
+}
+
+.results-container.no-results p {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.no-results-hint {
+    color: #999 !important;
+    font-size: 14px !important;
+}
+
+/* زر الإغلاق */
+.close-results {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 30px;
+    background: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.close-results:hover {
+    background: #e68a00;
+    transform: translateY(-2px);
+}
+
+/* حالة التحميل */
+.search-results-modal.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.spinner {
+    width: 60px;
+    height: 60px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid var(--secondary-color);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 25px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.search-results-modal.loading p {
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* Scrollbar styling */
+.search-suggestions::-webkit-scrollbar,
+.results-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.search-suggestions::-webkit-scrollbar-track,
+.results-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb,
+.results-container::-webkit-scrollbar-thumb {
+    background: var(--secondary-color);
+    border-radius: 4px;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb:hover,
+.results-container::-webkit-scrollbar-thumb:hover {
+    background: #e68a00;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-box {
+        max-width: 100%;
+        margin: 10px 0;
+        height: 36px;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        padding: 15px;
+        gap: 12px;
+    }
+    
+    .results-header {
+        padding: 20px;
+    }
+    
+    .results-header h2 {
+        font-size: 22px;
+    }
+    
+    .results-container {
+        width: 95%;
+        margin: 10px auto;
+    }
+    
+    .suggestion-item {
+        padding: 8px 12px;
+    }
+    
+    .suggestion-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .suggestion-title {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .search-box {
+        height: 34px;
+    }
+    
+    .search-box input,
+    .search-box button {
+        font-size: 14px;
+    }
+    
+    .results-grid {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 12px;
+        gap: 10px;
+    }
+    
+    .search-box button i {
+        margin-right: 4px;
+    }
+    
+    .results-header h2 {
+        font-size: 18px;
+    }
+    
+    .results-header {
+        padding: 15px;
+    }
+    
+    .results-container.no-results {
+        min-height: 300px;
+        padding: 40px 20px;
+    }
+    
+    .results-container.no-results i {
+        font-size: 70px;
+    }
+}

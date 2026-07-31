@@ -1,0 +1,27 @@
+name: Deploy to InfinityFree FTP
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  deploy:
+    name: Deploy to InfinityFree
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy site via FTP
+        uses: dawidd6/action-ftp-deploy@v4
+        with:
+          server: ${{ secrets.INFINITYFREE_FTP_HOST }}
+          username: ${{ secrets.INFINITYFREE_FTP_USERNAME }}
+          password: ${{ secrets.INFINITYFREE_FTP_PASSWORD }}
+          port: ${{ secrets.INFINITYFREE_FTP_PORT }}
+          local-dir: ./
+          server-dir: /htdocs
+          exclude: .git* .github*
